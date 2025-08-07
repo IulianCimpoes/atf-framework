@@ -1,0 +1,56 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="UI_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>../.logs/ui.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DB_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>../.logs/db.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REST_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>../.logs/rest.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="TEST_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>../.logs/test.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="TEST_FILE"/>
+    </root>
+
+    <logger name="com.atf.ui" level="INFO">
+        <appender-ref ref="UI_FILE"/>
+    </logger>
+
+    <logger name="com.atf.db" level="INFO">
+        <appender-ref ref="DB_FILE"/>
+    </logger>
+
+    <logger name="com.atf.rest" level="INFO">
+        <appender-ref ref="REST_FILE"/>
+    </logger>
+</configuration>
