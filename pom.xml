@@ -20,12 +20,28 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring-boot.version>3.2.4</spring-boot.version>
+        <spring-boot.version>3.5.4</spring-boot.version>
         <cucumber.version>7.14.0</cucumber.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Centralized JUnit version -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>5.13.4</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Centralized Lombok version -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.38</version>
+                <scope>provided</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -33,6 +49,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>com.atf</groupId>
                 <artifactId>logging</artifactId>
