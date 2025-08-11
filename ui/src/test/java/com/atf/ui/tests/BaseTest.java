@@ -9,14 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 public abstract class BaseTest {
 
 
-    @BeforeEach
-    public void setup() {
-        log.info(">>> BaseTest.setup() CALLED");
-        DriverFactory.initDriver();
-    }
-
-    @AfterEach
-    public void tearDown() {
-        DriverFactory.quitDriver();
-    }
+//    @BeforeEach
+//    public void setup() {
+//        log.info(">>> BaseTest.setup() CALLED");
+//        DriverFactory.initDriver();
+//    }
+//
+//    @AfterEach
+//    public void tearDown() {
+//        DriverFactory.quitDriver();
+//    }
 }

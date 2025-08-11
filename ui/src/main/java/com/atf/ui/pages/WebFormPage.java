@@ -1,7 +1,11 @@
 package com.atf.ui.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WebFormPage extends BasePage {
 
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/web-form.html";
@@ -9,6 +13,11 @@ public class WebFormPage extends BasePage {
     private final By textInput     = By.name("my-text");
     private final By passwordInput = By.name("my-password");
     private final By submitButton  = By.tagName("button");
+
+    @Autowired
+    public WebFormPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void open() {
         driver.get(URL);
