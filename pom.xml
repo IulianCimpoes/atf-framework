@@ -72,35 +72,43 @@
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
+                        <release>17</release>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>1.18.38</version>
+                            </path>
+                        </annotationProcessorPaths>
                     </configuration>
                     <executions>
-                        <execution>
-                            <id>default-compile</id>
-                            <configuration>
-                                <annotationProcessorPaths>
-                                    <path>
-                                        <groupId>org.projectlombok</groupId>
-                                        <artifactId>lombok</artifactId>
-                                        <version>1.18.38</version>
-                                    </path>
-                                </annotationProcessorPaths>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>default-testCompile</id>
-                            <goals>
-                                <goal>testCompile</goal>
-                            </goals>
-                            <configuration>
-                                <annotationProcessorPaths>
-                                    <path>
-                                        <groupId>org.projectlombok</groupId>
-                                        <artifactId>lombok</artifactId>
-                                        <version>1.18.38</version>
-                                    </path>
-                                </annotationProcessorPaths>
-                            </configuration>
-                        </execution>
+<!--                        <execution>-->
+<!--                            <id>default-compile</id>-->
+<!--                            <configuration>-->
+<!--                                <annotationProcessorPaths>-->
+<!--                                    <path>-->
+<!--                                        <groupId>org.projectlombok</groupId>-->
+<!--                                        <artifactId>lombok</artifactId>-->
+<!--                                        <version>1.18.38</version>-->
+<!--                                    </path>-->
+<!--                                </annotationProcessorPaths>-->
+<!--                            </configuration>-->
+<!--                        </execution>-->
+<!--                        <execution>-->
+<!--                            <id>default-testCompile</id>-->
+<!--                            <goals>-->
+<!--                                <goal>testCompile</goal>-->
+<!--                            </goals>-->
+<!--                            <configuration>-->
+<!--                                <annotationProcessorPaths>-->
+<!--                                    <path>-->
+<!--                                        <groupId>org.projectlombok</groupId>-->
+<!--                                        <artifactId>lombok</artifactId>-->
+<!--                                        <version>1.18.38</version>-->
+<!--                                    </path>-->
+<!--                                </annotationProcessorPaths>-->
+<!--                            </configuration>-->
+<!--                        </execution>-->
                     </executions>
                 </plugin>
 
