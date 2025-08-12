@@ -2,18 +2,15 @@ package com.atf.test.steps;
 
 import com.atf.ui.pages.WebFormPage;
 import io.cucumber.java.en.*;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@RequiredArgsConstructor
 public class WebFormSteps {
 
     private final WebFormPage page;
-
-    @Autowired
-    public WebFormSteps(WebFormPage webFormPage) {
-        this.page = webFormPage;
-    }
 
     @Given("I open the web form page")
     public void i_open_the_web_form_page() {

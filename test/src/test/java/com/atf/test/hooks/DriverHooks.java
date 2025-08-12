@@ -1,20 +1,23 @@
 package com.atf.test.hooks;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+@RequiredArgsConstructor
 public class DriverHooks {
 
-    @Autowired
-    private WebDriver driver;
+    private final WebDriver driver;
+
+    @Before
+    public void setup() {
+        // Already initialized in @Bean
+        driver.manage().window().maximize();
+    }
 
     @After
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+    public void teardown() {
+        driver.quit();
     }
 }
