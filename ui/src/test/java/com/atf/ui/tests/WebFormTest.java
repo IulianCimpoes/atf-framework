@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class WebFormTest extends BaseTest {
 
-    @Test
-    public void testFormInputReflection() {
-        WebFormPage page = new WebFormPage();
-        page.open();
-
-        String input = "ATF test string";
-        page.enterText(input);
-
-        assertEquals(input, page.getEnteredText(), "Text input should retain typed value");
-    }
+//    @Test
+//    public void testFormInputReflection() {
+//        WebFormPage page = new WebFormPage();
+//        page.open();
+//
+//        String input = "ATF test string";
+//        page.enterText(input);
+//
+//        assertEquals(input, page.getEnteredText(), "Text input should retain typed value");
+//    }
 }

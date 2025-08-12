@@ -4,10 +4,16 @@ import com.atf.ui.pages.WebFormPage;
 import io.cucumber.java.en.*;
 import org.junit.jupiter.api.Assertions;
 import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class WebFormSteps {
 
-    private final WebFormPage page = new WebFormPage();
+    private final WebFormPage page;
+
+    @Autowired
+    public WebFormSteps(WebFormPage webFormPage) {
+        this.page = webFormPage;
+    }
 
     @Given("I open the web form page")
     public void i_open_the_web_form_page() {

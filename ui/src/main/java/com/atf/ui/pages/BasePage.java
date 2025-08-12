@@ -3,6 +3,8 @@ package com.atf.ui.pages;
 import com.atf.ui.driver.DriverFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.time.Duration;
 
 public abstract class BasePage {
@@ -10,12 +12,9 @@ public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public BasePage() {
-        this.driver = DriverFactory.getDriver();
-        if (this.driver == null) {
-            throw new IllegalStateException("WebDriver is not initialized. Make sure DriverFactory.initDriver() is called before creating a Page Object.");
-        }
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    @Autowired
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
     }
 
     protected void type(By locator, String text) {
