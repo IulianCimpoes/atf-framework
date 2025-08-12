@@ -1,21 +1,17 @@
 package com.atf.ui.pages;
 
-import com.atf.ui.driver.DriverFactory;
-import org.openqa.selenium.*;
+import lombok.RequiredArgsConstructor;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.Duration;
-
+@RequiredArgsConstructor
 public abstract class BasePage {
 
-    protected WebDriver driver;
-    protected WebDriverWait wait;
-
-    @Autowired
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-    }
+    protected final WebDriver driver;
 
     protected void type(By locator, String text) {
         WebElement element = driver.findElement(locator);
