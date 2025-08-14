@@ -1,0 +1,3 @@
+ui:
+  headless: true
+  baseUrl: "https://bonigarcia.dev/selenium-webdriver-java/web-form.html"
