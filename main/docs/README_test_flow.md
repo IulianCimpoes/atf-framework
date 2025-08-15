@@ -4,25 +4,23 @@ This document explains how tests start and run in the current setup when you tri
 
 ---
 
-![Test runner flow](./test-runner-flow.png)
-
 ## High-level flow
 
 ```mermaid
-flowchart TD
-  A[Invoke tests\n(mvn test or IntelliJ JUnit)] --> B[TestRunner.java\n@Suite + @IncludeEngines("cucumber")]
-  B --> C[JUnit Platform\n(test engine registry)]
-  C --> D[Cucumber Engine]
-  D --> E[Read configuration parameters\n(e.g. GLUE, PLUGIN)]
-  E --> F[Cucumber ↔ Spring bridge\n@CucumberContextConfiguration]
-  F --> G[@SpringBootTest(classes = TestApplication)\nStart Spring test context]
-  G --> H[Scan + wire beans\n(e.g., WebDriver bean)]
-  G --> I[Instantiate glue\nSteps + Hooks as Spring beans]
-  D --> J[Discover features on classpath\n(e.g., classpath:features/**.feature)]
-  J --> K[Run scenario lifecycle\n@Before → Steps → @After]
-  I --> L[Hooks use WebDriver\ncreate/cleanup per scenario]
-  I --> M[Steps use Page Objects\nfrom ui module]
-  K --> N[Report results\n(Surefire summary + plugins\nhtml/json)]
+graph TD
+    A["Invoke tests: mvn test or JUnit"] --> B["TestRunner: @Suite + @IncludeEngines(cucumber)"]
+    B --> C["JUnit Platform"]
+    C --> D["Cucumber engine"]
+    D --> E["Read config params: GLUE, PLUGIN"]
+    E --> F["@CucumberContextConfiguration bridge"]
+    F --> G["@SpringBootTest(TestApplication) starts Spring context"]
+    G --> H["Wire beans: WebDriver"]
+    G --> I["Instantiate glue: Steps and Hooks"]
+    D --> J["Discover feature files on classpath"]
+    J --> K["Scenario lifecycle: Before > Steps > After"]
+    I --> L["Hooks use WebDriver: create and cleanup per scenario"]
+    I --> M["Steps use Page Objects from ui module"]
+    K --> N["Reports: Surefire and Cucumber html/json"]
 ```
 
 ---
