@@ -1,3 +1,4 @@
+@ui
 Feature: Web Form interaction 02
 
   Scenario: Submit a simple text input 02
