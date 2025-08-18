@@ -1,5 +1,6 @@
 package com.atf.test.steps;
 
+import com.atf.test.context.ScenarioContext;
 import com.atf.ui.pages.WebFormPage;
 import io.cucumber.java.en.*;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class WebFormSteps {
 
     private final WebFormPage page;
+
+    private final ScenarioContext scenarioContext;
 
     @Given("I open the web form page")
     public void i_open_the_web_form_page() {
