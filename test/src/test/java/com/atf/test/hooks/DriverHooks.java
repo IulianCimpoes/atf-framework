@@ -4,19 +4,23 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 public class DriverHooks {
 
-    private final WebDriver driver;
+    @Lazy
+    private WebDriver driver;
 
-    @Before
+    @Before("@ui")
     public void setup() {
         // Already initialized in @Bean
         driver.manage().window().maximize();
     }
 
-    @After
+    @After("@ui")
     public void teardown() {
         driver.quit();
     }
