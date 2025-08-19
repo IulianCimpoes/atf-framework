@@ -5,13 +5,15 @@ import io.cucumber.java.Before;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
 public class DriverHooks {
 
-    @Autowired
     private ObjectProvider<WebDriver> driverProvider;
+
+    public DriverHooks(ObjectProvider<WebDriver> driverProvider) {
+        this.driverProvider = driverProvider;
+    }
 
     @Before("@ui")
     public void setup() {
@@ -20,7 +22,7 @@ public class DriverHooks {
         driverProvider.getObject().manage().window().maximize();
     }
 
-    @After("@ui")
+    @After(value = "@ui", order = 100)
     public void teardown() {
         WebDriver driver = driverProvider.getIfAvailable();
         if (driver != null) {
@@ -35,4 +37,5 @@ public class DriverHooks {
         }
 
     }
+
 }
