@@ -1,7 +1,7 @@
 
 # How UI starts & how screenshots work (current setup)
 
-This documents what happens now that screenshots attach correctly, based on your current files:
+This documents what happens then screenshots attach:
 - `ui/config/WebDriverConfig.java` — scenario-scoped, lazy WebDriver bean (Chrome)
 - `test/hooks/DriverHooks.java` — `@Before/@After` restricted to `@ui` scenarios, teardown after UI
 - `test/hooks/ScreenShotsHooks.java` — `@After("@ui")` that **unwraps the Spring proxy** (if any) and attaches a screenshot on failure
