@@ -2,22 +2,40 @@ package com.atf.test.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.ObjectProvider;
 
-@RequiredArgsConstructor
+@Slf4j
 public class DriverHooks {
 
-    private final WebDriver driver;
+    private ObjectProvider<WebDriver> driverProvider;
 
-    @Before
+    public DriverHooks(ObjectProvider<WebDriver> driverProvider) {
+        this.driverProvider = driverProvider;
+    }
+
+    @Before("@ui")
     public void setup() {
+        log.info("Init actions for @ui scenarios");
         // Already initialized in @Bean
-        driver.manage().window().maximize();
+        driverProvider.getObject().manage().window().maximize();
     }
 
-    @After
+    @After(value = "@ui", order = 100)
     public void teardown() {
-        driver.quit();
+        WebDriver driver = driverProvider.getIfAvailable();
+        if (driver != null) {
+            log.info("Closing WebDriver after @ui scenario");
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                log.error("Error while closing WebDriver: {}", e.getMessage());
+            }
+        } else {
+            log.warn("WebDriver was not initialized or already closed.");
+        }
+
     }
+
 }

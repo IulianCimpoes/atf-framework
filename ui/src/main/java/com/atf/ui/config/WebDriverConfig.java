@@ -1,14 +1,12 @@
 package com.atf.ui.config;
 
-import io.cucumber.spring.ScenarioScope;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 
 
 @Configuration
@@ -19,7 +17,9 @@ public class WebDriverConfig {
     private boolean headless;
 
     @Bean(destroyMethod = "quit")
-    @ScenarioScope
+    @Scope(value = "cucumber-glue",
+            proxyMode = ScopedProxyMode.TARGET_CLASS)
+    @Lazy
     public WebDriver webDriver() {
         WebDriverManager.chromedriver().setup();
         log.info("Chrome driver has been initialized");
